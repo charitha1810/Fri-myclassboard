@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Command Center · MCB Revenue Intelligence</title>
+<meta name="description" content="Revenue Intelligence portal: payment-mode partitions, gateway and loan-partner coverage, upsell opportunities and pay-link campaigns across all institutes.">
+<link rel="stylesheet" href="vendor/bootstrap.min.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/extra.css">
+<script>
+  // Apply the saved / system theme before first paint.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('mcb-theme'); } catch (e) {}
+    if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-bs-theme', t);
+    var l = null;
+    try { l = localStorage.getItem('mcb-lang'); } catch (e) {}
+    document.documentElement.setAttribute('data-lang', l === 'adv' ? 'adv' : 'simple');
+  })();
+</script>
+</head>
+<body>
+<!-- Icon sprite: Bootstrap Icons 1.11.3 (MIT), inline SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="bi-arrow-repeat" viewBox="0 0 16 16"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/></symbol><symbol id="bi-buildings" viewBox="0 0 16 16"><path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
+  <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z"/></symbol><symbol id="bi-calendar-check" viewBox="0 0 16 16"><path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></symbol><symbol id="bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></symbol><symbol id="bi-caret-up-fill" viewBox="0 0 16 16"><path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></symbol><symbol id="bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></symbol><symbol id="bi-clock-history" viewBox="0 0 16 16"><path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"/>
+  <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
+  <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/></symbol><symbol id="bi-credit-card-2-front" viewBox="0 0 16 16"><path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+  <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/></symbol><symbol id="bi-download" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></symbol><symbol id="bi-exclamation-lg" viewBox="0 0 16 16"><path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0zM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0"/></symbol><symbol id="bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+  <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/></symbol><symbol id="bi-graph-up-arrow" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"/></symbol><symbol id="bi-grid-1x2" viewBox="0 0 16 16"><path d="M6 1H1v14h5zm9 0h-5v5h5zm0 9v5h-5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1z"/></symbol><symbol id="bi-chat-text" viewBox="0 0 16 16"><path d="M2.678 11.894a1 1 0 0 1 .287.801 11 11 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8 8 0 0 0 8 14c3.996 0 7-2.807 7-6s-3.004-6-7-6-7 2.808-7 6c0 1.468.617 2.83 1.678 3.894m-.493 3.905a22 22 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a10 10 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105"/><path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8m0 2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5"/></symbol><symbol id="bi-kanban" viewBox="0 0 16 16"><path d="M13.5 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm-11-1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+  <path d="M6.5 3a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1zm-4 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1zm8 0a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1z"/></symbol><symbol id="bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></symbol><symbol id="bi-lock" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/></symbol><symbol id="bi-moon-stars" viewBox="0 0 16 16"><path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+  <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/></symbol><symbol id="bi-plus-lg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/></symbol><symbol id="bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></symbol><symbol id="bi-send" viewBox="0 0 16 16"><path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/></symbol><symbol id="bi-shield-check" viewBox="0 0 16 16"><path d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"/>
+  <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/></symbol><symbol id="bi-sliders" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/></symbol><symbol id="bi-sort-down" viewBox="0 0 16 16"><path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/></symbol><symbol id="bi-sun" viewBox="0 0 16 16"><path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/></symbol><symbol id="bi-telephone" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></symbol><symbol id="bi-three-dots" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></symbol></svg>
+<div class="app d-flex">
+
+  <!-- ============ Sidebar (offcanvas below lg) ============ -->
+  <aside class="sidebar offcanvas-lg offcanvas-start" id="sidebar" tabindex="-1" aria-label="Main navigation">
+    <div class="sidebar-inner d-flex flex-column gap-4 p-3 py-4 h-100">
+      <div class="d-flex align-items-center justify-content-between px-2">
+        <div class="d-flex align-items-center gap-2">
+          <div class="brand-dots" aria-hidden="true"><span style="background:#F0544F"></span><span style="background:#F5B400"></span><span style="background:#5B8DEF"></span></div>
+          <div class="d-flex flex-column">
+            <span class="fs-8 text-uppercase" style="letter-spacing:.08em;color:var(--mcb-night-muted)">MyClassBoard</span>
+            <span class="fw-bold text-white" style="font-size:.95rem">Revenue Intelligence</span>
+          </div>
+        </div>
+        <button type="button" class="btn-close btn-close-white d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Close menu"></button>
+      </div>
+      <nav class="d-flex flex-column gap-1" aria-label="Insights">
+        <span class="side-label">Insights</span>
+        <a class="side-link" href="#command" data-nav="command"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-grid-1x2"></use></svg>Command Center</a>
+        <a class="side-link" href="#institutes" data-nav="institutes"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-buildings"></use></svg>Institutes</a>
+        <a class="side-link" href="#coverage" data-nav="coverage"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-credit-card-2-front"></use></svg>Gateways</a>
+        <a class="side-link" href="#loans" data-nav="loans"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-graph-up-arrow"></use></svg>Loan partners</a>
+      </nav>
+      <nav class="d-flex flex-column gap-1" aria-label="Grow">
+        <span class="side-label">Grow</span>
+        <a class="side-link" href="#campaigns" data-nav="campaigns"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-send"></use></svg>Campaigns</a>
+        <a class="side-link" href="#duemonths" data-nav="duemonths"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-calendar-check"></use></svg>Due month-wise organisations</a>
+        <a class="side-link" href="#wareport" data-nav="wareport"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-graph-up-arrow"></use></svg>WhatsApp report</a>
+        <a class="side-link" href="#templates" data-nav="templates"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-chat-text"></use></svg>Templates</a>
+        <a class="side-link" href="#pipeline" data-nav="pipeline"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-kanban"></use></svg>Upsell pipeline</a>
+      </nav>
+      <nav class="d-flex flex-column gap-1" aria-label="Setup">
+        <span class="side-label">Setup</span>
+        <button type="button" class="side-link" data-bs-toggle="modal" data-bs-target="#consentModal"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-shield-check"></use></svg>Consent register</button>
+        <button type="button" class="side-link" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-sliders"></use></svg>Revenue settings</button>
+      </nav>
+      <div class="fresh mt-auto d-flex flex-column gap-2">
+        <span class="fw-semibold text-white">Data freshness</span>
+        <div class="d-flex justify-content-between gap-2"><span>Org-wise</span><span class="text-white" id="fOrg">—</span></div>
+        <div class="d-flex justify-content-between gap-2"><span>PG by gateway</span><span class="text-white" id="fPg">—</span></div>
+        <div class="d-flex justify-content-between gap-2"><span>Payment modes</span><span style="color:#F5B97A" id="fModes">—</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="flex-grow-1 d-flex flex-column" style="min-width:0">
+    <!-- ============ Top bar ============ -->
+    <header class="topbar d-flex flex-wrap align-items-center gap-2 gap-md-3 px-3 px-lg-4 py-2">
+      <button class="btn btn-quiet d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Open menu"><svg class="bi fs-5" aria-hidden="true" focusable="false"><use href="#bi-list"></use></svg></button>
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <div class="lang-switch" role="group" aria-label="Wording" title="Simple: plain English. Advanced: analyst terms and extra detail.">
+          <button type="button" data-lang-btn="simple" aria-pressed="true">Simple</button>
+          <button type="button" data-lang-btn="adv" aria-pressed="false">Advanced</button>
+        </div>
+        <button type="button" class="live-badge" id="liveBadge" title="Checking the database…" aria-live="polite"><span class="live-dot"></span><span id="liveText">Connecting…</span></button>
+        <label for="fy" class="fs-7 text-muted-2 d-none d-md-inline">Financial year</label>
+        <select id="fy" class="form-select" style="width:auto"></select>
+        <button type="button" class="btn btn-quiet" id="themeBtn" aria-label="Switch colour theme" title="Light / dark"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-moon-stars"></use></svg></button>
+        <div class="dropdown">
+          <button class="btn btn-quiet rounded-circle p-0" style="width:42px" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Account menu" id="userBtn"><span class="avatar" style="width:34px;height:34px" id="userAvatar">··</span></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><span class="dropdown-item-text fs-7 text-muted-2" id="userEmail"></span></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel">Revenue settings</button></li>
+            <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#consentModal">Consent register</button></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" type="button" id="refreshBtn">Refresh data from database</button></li>
+            <li><button class="dropdown-item" type="button" id="logoutBtn">Sign out</button></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <datalist id="schoolList"></datalist>
+
+    <main class="main-wrap w-100 px-3 px-lg-4 py-4" id="main" tabindex="-1">
+
+      <div class="load-state" id="loadState" role="status" aria-live="polite">
+        <div class="spinner-border" style="color:var(--mcb-violet)" aria-hidden="true"></div>
+        <span id="loadText">Loading revenue data…</span>
+      </div>
+      <div id="newData" class="alert-item align-items-center mb-3" style="background:var(--mcb-violet-soft)" role="status" aria-live="polite" hidden>
+        <svg class="bi text-violet" aria-hidden="true" focusable="false"><use href="#bi-arrow-repeat"></use></svg>
+        <span class="flex-grow-1" id="newDataText">New data is available.</span>
+        <button type="button" class="btn btn-sm btn-primary" id="newDataBtn">Reload figures</button>
+      </div>
+      <div id="notices" class="d-flex flex-column gap-2 mb-3"></div>
+
+      <!-- =====================================================
+           VIEW 1 · COMMAND CENTER
+           ===================================================== -->
+      <section data-view="command" class="d-flex flex-column gap-4" aria-labelledby="h-command" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div>
+            <h1 class="page-title" id="h-command">Command Center</h1>
+            <div class="text-muted-2 mt-1"><span id="scopeLbl">All institutes</span> · FY <span class="fyLbl"></span> · <span id="periodLabel"></span></div>
+          </div>
+          <div class="seg" role="group" aria-label="Period">
+            <input type="radio" class="btn-check" name="period" id="pFy" value="fytd" checked>
+            <label class="btn" for="pFy">FY to date</label>
+            <input type="radio" class="btn-check" name="period" id="pLast" value="last">
+            <label class="btn" for="pLast" id="pLastLbl">Last month</label>
+          </div>
+        </div>
+
+        <div class="vfbar" data-vf="command" aria-label="Command Center filters"></div>
+
+        <div class="signal d-flex flex-wrap align-items-center gap-3 gap-lg-4 p-3 p-lg-4">
+          <span class="eyebrow">This month at a glance</span>
+          <p class="m-0 flex-grow-1 fs-6" style="flex-basis:420px;text-wrap:pretty" id="signalText"></p>
+          <a href="#command" data-list-popup="st:nopg" class="btn btn-light fw-bold">Show schools with nothing paid online</a>
+        </div>
+
+        <details class="howto simple-only">
+          <summary>New here? Key words used on this page</summary>
+          <ul>
+            <li><b>MCB gateway / online via MCB</b>: parents paid online through a payment gateway connected to MyClassBoard (the “Online Payment” mode).</li>
+            <li><b>Our partner gateway</b>: a gateway MCB has a partnership with. <b>MCB earns commission only on these payments.</b></li>
+            <li><b>Not our partner</b>: parents pay online, but MCB earns nothing on those payments.</li>
+            <li><b>No MCB gateway</b>: the school or branch collects every fee outside MCB.</li>
+            <li><b>Offline</b>: cash, card swipe at the counter, cheque and DD. MCB earns nothing until these move to pay links.</li>
+            <li><b>₹ amounts</b> are shown in full, to the paisa, exactly as the database adds them up (chart scales are marked in ₹ Cr: 1 Cr = ₹1,00,00,000). <b>% of fees</b> always means a share of the total fees collected for the group shown.</li>
+            <li>Hover over any number, bar or column heading to see more detail.</li>
+          </ul>
+        </details>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3" id="kpis" aria-label="Headline numbers"></div>
+        <div class="note fs-7" id="kpiSum" aria-live="polite"></div>
+        <div class="card" id="totalRecon"><div class="card-body d-flex flex-column gap-2">
+          <div><h2 class="card-title">What is counted in the total, and what is left out</h2>
+            <div class="card-sub">All schools, FY <span class="fyLbl"></span>, straight from the database: every row of the year, then each rule the portal applies. Filters on this page do not change this table.</div></div>
+          <div class="table-responsive"><table class="table table-sm align-middle mb-0" style="min-width:620px">
+            <thead><tr><th scope="col">Line</th><th scope="col" class="text-end">Amount (₹)</th><th scope="col" class="text-end">Organisations</th><th scope="col" class="text-end">Rows</th><th scope="col">Why</th></tr></thead>
+            <tbody id="totalReconRows"><tr><td colspan="5" class="text-muted-2">Loading…</td></tr></tbody>
+          </table></div>
+        </div></div>
+
+        <!-- Commission: what MCB earns now and the four levers to grow it -->
+        <div class="card comm-card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+            <div style="max-width:720px">
+              <h2 class="card-title" data-adv="Commission levers (take on partner-PG volume)">Grow MCB commission</h2>
+              <div class="card-sub">MCB earns commission only on fees paid online through <b>our partner gateways</b>. Below are four ways to get more fees onto them, with the extra commission each could bring in a year.</div>
+            </div>
+            <div class="text-end">
+              <div class="kpi-label">Commission we earn now (per year)</div>
+              <div class="kpi-value text-violet" id="commNow"></div>
+              <div class="kpi-sub" id="commNowSub"></div>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-2" id="commLevers"></div>
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <span class="fs-8 text-faint" id="commNote"></span>
+            <button type="button" class="btn btn-sm btn-quiet" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel">Change commission rate &amp; target</button>
+          </div>
+          <details class="howto simple-only">
+            <summary>How these figures are worked out</summary>
+            <ul>
+              <li><b>Commission we earn now</b> = commission rate × fees paid online through our partner gateways, scaled to a full year.</li>
+              <li>Each “way” assumes the target share (see the note above) of the money involved moves onto our partner gateways.</li>
+              <li><b>See top institutes</b> lists the schools with the most to gain. <b>List them all</b> opens them in the Institutes page.</li>
+              <li>Change the rate with “MCB commission rate” in the filter bar, or the default in Revenue settings.</li>
+            </ul>
+          </details>
+          <div class="adv-note adv-only">commission = Σ(PG volume × partner fraction) × take × 12/months · partner fraction = share of an org's mapped gateways with IsActive 1 AND IsMCBPartner 1 · levers: conv% × offline (cash, POS, cheque, DD) at partner orgs · non-partner PG volume · N/A-branch share × collections × conv% · N/A orgs' collections × conv%</div>
+          <div id="commDetail" hidden>
+            <div class="d-flex justify-content-between align-items-center mb-2"><b id="commDetailTitle"></b><button type="button" class="btn btn-sm btn-link" id="commDetailClose">Close</button></div>
+            <div class="table-responsive"><table class="table table-sm table-hover align-middle" style="min-width:820px">
+              <thead><tr><th scope="col">Institute</th><th scope="col" data-adv="Gateways">Gateways it uses</th><th scope="col" class="text-end" data-adv="Collections">Fees collected</th><th scope="col" class="text-end" data-adv="PG share">Paid online via MCB</th><th scope="col" class="text-end" data-adv="Offline">Paid offline</th><th scope="col" class="text-end" title="Fees that would move onto our partner gateways" data-adv="Extra partner volume">Extra fees on our gateways</th><th scope="col" class="text-end" data-adv="Commission / yr">Extra commission / yr</th><th scope="col" data-adv="Basis">How it's estimated</th></tr></thead>
+              <tbody id="commDetailRows"></tbody>
+            </table></div>
+          </div>
+        </div></div>
+
+        <!-- AI suggestions -->
+        <div class="card ai-card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
+            <div><h2 class="card-title d-flex align-items-center gap-2"><span class="ai-dot" aria-hidden="true"></span>AI suggestions to grow commission</h2>
+              <div class="card-sub">Reads the live figures for the current filters and suggests what to do next. Treat the ₹ amounts as estimates.<span id="aiMeta"></span></div></div>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-primary" data-ai-run="portfolio">Get suggestions</button>
+            </div>
+          </div>
+          <div id="aiOut" class="d-flex flex-column gap-2" aria-live="polite"></div>
+        </div></div>
+
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Partner segments (gateway mapping × IsMCBPartner)">Which gateway each school uses</h2>
+              <div class="card-sub">All schools grouped by the payment gateway they use · <span class="fyRangeLbl"></span> · click a box to list those schools</div></div>
+          </div>
+          <details class="howto simple-only">
+            <summary>How to read this</summary>
+            <ul>
+              <li>The <b>coloured bar</b> shows how many schools are in each group. The number and % are printed on the bar and repeated in the key underneath.</li>
+              <li>In each box, <b>“60% of all 1,237”</b> means 60% of all schools are in this group.</li>
+              <li><b>“Paid online through MCB gateway: 36.8%”</b> means that of all fees this group collected, 36.8% was paid online through MCB. The rest was paid offline or by bank transfer.</li>
+              <li>A school with several gateways counts as <b>“Our partner gateway”</b> if at least one of them is our partner.</li>
+              <li>In the table, the small % under each amount is that payment method's share of <b>that group's</b> fees. The payment-method columns add up to <b>Fees collected</b>.</li>
+            </ul>
+          </details>
+          <div id="segBar"></div>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-2" id="segTiles"></div>
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mt-1">
+            <b>How each group pays</b>
+            <div class="legend" id="segMixLegend"></div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:1280px">
+              <thead><tr>
+                <th scope="col" data-adv="Segment">Group</th><th scope="col" class="text-end">Institutes</th><th scope="col" class="text-end" data-adv="Collections">Fees collected</th>
+                <th scope="col" style="width:240px" title="Each colour is a payment method; see the colour key above" data-adv="Mode mix">How they pay</th><th scope="col" class="text-end" data-adv="MCB PG">Online via MCB gateway</th><th scope="col" class="text-end" title="NEFT, direct UPI, BBPS: online, but not through MCB" data-adv="NEFT / UPI / BBPS">Bank transfer / direct UPI</th>
+                <th scope="col" class="text-end">Cash</th><th scope="col" class="text-end">Card swipe</th><th scope="col" class="text-end">Cheque &amp; DD</th><th scope="col" class="text-end" title="Automatic bank debit (ECS / NACH)" data-adv="ECS / NACH">Auto-debit (ECS)</th><th scope="col" class="text-end" title="Fees paid through an education loan" data-adv="Loan Payments">Education loan</th><th scope="col" class="text-end" title="Challan, scholarship, salary deductions, refunds / transfers, credit notes, prepaid card and any unmapped mode">Other</th><th scope="col" class="text-end" title="Number of fee payments" data-adv="Txns">Payments</th><th scope="col" class="text-end" title="Fees collected ÷ number of payments" data-adv="Avg ticket">Average payment</th>
+              </tr></thead>
+              <tbody id="segRows"></tbody>
+            </table>
+          </div>
+          <div class="adv-note adv-only">Segment = MCB_OrganisationPaymentGatewayName (DISTINCT DBName, OrganisationID, BranchID, PaymentGatewayName) × MasterPaymentGateways · partner if any mapped gateway has IsActive 1 AND IsMCBPartner 1 · “NA” = not on MCB PG · MCB PG = PaymentModeID 5 (Online Payment) · inactive orgs (MCBOrganisations.Active 0) excluded</div>
+        </div></div>
+
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Branch coverage (gateway mapping by BranchID)">Branches with and without an MCB gateway</h2>
+              <div class="card-sub">Many schools use an MCB gateway at some branches but not at others</div></div>
+          </div>
+          <details class="howto simple-only">
+            <summary>How to read this</summary>
+            <ul>
+              <li>The <b>bar</b> shows every branch of every school, coloured by the gateway that branch uses.</li>
+              <li>The <b>boxes</b> group schools: every branch on an MCB gateway, only some branches, or none.</li>
+              <li>The <b>table</b> lists schools where only some branches use an MCB gateway, biggest first. Adding the missing branches is the quickest win, because the school already works with us.</li>
+              <li>Fee amounts are for the whole school. Our payment data is not split by branch.</li>
+            </ul>
+          </details>
+          <div class="d-flex flex-column gap-1">
+            <div class="d-flex justify-content-between fs-7"><span class="text-muted-2">All branches</span><b id="brTotal"></b></div>
+            <div id="brBar"></div>
+            <div id="brLegend" hidden></div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-2" id="covTiles2"></div>
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mt-1">
+            <div><b>Schools where some branches don't have an MCB gateway</b><div class="fs-7 text-muted-2">Biggest fee collections first</div></div>
+            <a href="#command" class="btn btn-sm btn-quiet" data-list-popup="cov:partial" id="brAll">View all</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:900px">
+              <thead><tr><th scope="col" data-adv="Institute">Institute and gateways used</th><th scope="col" style="width:230px" data-adv="Branch coverage">Branches using an MCB gateway</th><th scope="col" class="text-end" data-adv="Collections">Fees collected</th><th scope="col" class="text-end" title="Share of fees paid online through MCB" data-adv="PG share">Paid online via MCB</th><th scope="col" class="text-end" data-adv="Offline (cash, POS, cheque, DD)">Paid offline (cash, card, cheque, DD)</th></tr></thead>
+              <tbody id="brRows"></tbody>
+            </table>
+          </div>
+        </div></div>
+
+        <div class="row g-3">
+          <div class="col-xl-8">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex flex-wrap justify-content-between gap-2">
+                <div><h2 class="card-title" data-adv="Payment-mode mix by month (% of GMV)">How parents paid, month by month</h2><div class="card-sub">Each column is one month (100% = all fees that month). The % inside each block is that payment method's share; the line under each month is the share paid online through MCB. Hover for ₹ amounts; <b>click a month</b> to see every payment method and school behind it.</div></div>
+                <div class="legend" id="mixLegend"></div>
+              </div>
+              <div class="chart" id="mixChart" role="img" aria-label="Stacked column chart of payment-mode share by month. Figures are also in the partition table below."></div>
+              <div class="note" id="mixNote"></div>
+            </div></div>
+          </div>
+          <div class="col-xl-4">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div><h2 class="card-title" data-adv="Upside simulator (offline → PG)">What if more parents paid online?</h2><div class="card-sub">Drag the slider to see what happens if part of the cash, card swipe, cheque and DD payments move to MCB pay links</div></div>
+              <div>
+                <div class="d-flex justify-content-between align-items-baseline gap-2">
+                  <label for="shift" class="fw-semibold">How much of the offline money moves online</label>
+                  <span class="fs-4 fw-bold text-orange" id="shiftOut">20%</span>
+                </div>
+                <input type="range" class="form-range" id="shift" min="0" max="60" step="5" value="20">
+                <div class="d-flex justify-content-between fs-8 text-faint"><span>0%</span><span>30%</span><span>60%</span></div>
+              </div>
+              <div class="d-flex flex-column gap-2">
+                <div><div class="d-flex justify-content-between fs-7"><span class="text-muted-2">Paid online through MCB today</span><b id="shareNow"></b></div>
+                  <div class="progress mt-1" style="height:10px" role="progressbar" aria-label="Paid online through MCB today" id="shareNowPb"><div class="progress-bar" style="background:#9C86F0"></div></div></div>
+                <div><div class="d-flex justify-content-between fs-7"><span class="text-muted-2">Paid online through MCB after the change</span><b class="text-violet" id="shareNew"></b></div>
+                  <div class="progress mt-1" style="height:10px" role="progressbar" aria-label="Paid online through MCB after the change" id="shareNewPb"><div class="progress-bar" style="background:var(--mcb-violet)"></div></div></div>
+              </div>
+              <div class="row g-2">
+                <div class="col-6"><div class="stat-box h-100"><div class="fs-8 text-muted-2">Extra fees paid online</div><div class="fw-bold fs-5" id="extraGmv"></div><div class="fs-8 text-faint" id="basis1"></div></div></div>
+                <div class="col-6"><div class="stat-box h-100"><div class="fs-8 text-muted-2">Extra MCB commission</div><div class="fw-bold fs-5 text-violet" id="extraRev"></div><div class="fs-8 text-faint" id="basis2"></div></div></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center border-top pt-3 mt-auto">
+                <span class="fw-semibold">Extra MCB commission per year</span>
+                <span class="fs-3 fw-bold text-violet" id="extraAnnual"></span>
+              </div>
+              <div class="fs-8 text-faint">Uses a <span class="takeLbl"></span> commission rate on fees through our partner gateways. Change it in the filter bar or in <a href="#" data-bs-toggle="offcanvas" data-bs-target="#settingsPanel">Revenue settings</a>.</div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Payment-mode partition">Every payment method, and what it means for MCB</h2><div class="card-sub">Fees by payment method, whether MCB earns on it, and what to do to move it online</div></div>
+          </div>
+          <details class="howto simple-only">
+            <summary>How to read this</summary>
+            <ul>
+              <li><span class="chip chip-violet">We earn on this</span>: paid through the MCB gateway or loan partners. MCB earns commission.</li>
+              <li><span class="chip chip-orange">Offline: can move online</span>: cash, card swipe, cheque and DD at the counter. This is the biggest opportunity.</li>
+              <li><span class="chip chip-lilac">Online, but not via MCB</span>: NEFT, direct UPI or BBPS straight to the school's bank. MCB earns nothing.</li>
+              <li><span class="chip chip-blue">Auto-debit</span>: automatic bank debits (ECS / NACH).</li>
+              <li><b>% of fees</b> is the method's share of all fees this year. The last two columns compare the latest month with the month before.</li>
+              <li><b>Colours of the change:</b> violet = good for MCB (money we earn on is growing, or offline money is shrinking); orange = bad for MCB.</li>
+            </ul>
+          </details>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:920px">
+              <thead><tr>
+                <th scope="col" data-adv="Payment mode">Payment method</th><th scope="col" data-adv="Revenue role">What it means for MCB</th><th scope="col" class="text-end" data-adv="FY to date">This year so far</th>
+                <th scope="col" style="width:190px" data-adv="Share of GMV">% of fees</th><th scope="col" class="text-end lastMonLbl"></th><th scope="col" class="text-end">Change vs <span class="prevMonLbl"></span></th><th scope="col" data-adv="Conversion play">What to do</th>
+              </tr></thead>
+              <tbody id="modeRows"></tbody>
+            </table>
+          </div>
+        </div></div>
+
+        <div class="row g-3">
+          <div class="col-xl-5">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div><h2 class="card-title" data-adv="PG adoption status">How much each school pays online</h2><div class="card-sub"><span id="covCount"></span> schools, grouped by the share of fees paid online through MCB · click a box to list them</div></div>
+              <div id="covBar"></div>
+              <div class="row g-2" id="covTiles"></div>
+              <div class="border-top pt-3 d-flex flex-column gap-2">
+                <div class="d-flex justify-content-between align-items-baseline gap-2"><span class="fw-semibold">Education loans</span><span class="fs-7 text-muted-2" id="loanCovSub"></span></div>
+                <div id="loanCov" class="d-flex flex-column gap-2"></div>
+                <div class="note text-orange" style="background:var(--mcb-orange-soft)" id="loanCovNote"></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="col-xl-7">
+            <div class="card h-100"><div class="card-body d-flex flex-column">
+              <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-2">
+                <div><h2 class="card-title" data-adv="Top opportunities by score">Top 5 schools to call today</h2><div class="card-sub">Schools with the highest opportunity score (0–100): lots of fees paid offline and little paid online. The orange amount is what they collected offline.</div></div>
+                <a href="#institutes" class="btn btn-sm btn-quiet">Open all institutes</a>
+              </div>
+              <div id="topOpps"></div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-xl-7">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+                <div><h2 class="card-title" data-adv="PG volume by gateway">Online fees by payment gateway</h2><div class="card-sub" id="gwMiniSub"></div></div>
+                <a href="#coverage" class="btn btn-sm btn-quiet">Gateway detail</a>
+              </div>
+              <div id="gwMini" class="d-flex flex-column gap-2"></div>
+            </div></div>
+          </div>
+          <div class="col-xl-5">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-2">
+              <h2 class="card-title mb-1">Needs attention</h2>
+              <div id="alerts" class="d-flex flex-column gap-2"></div>
+            </div></div>
+          </div>
+        </div>
+        <div class="card" id="orgSec"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Organisations × payment mode">All schools: how their fees were paid</h2><div class="card-sub">Each school's fees by payment method, and the gateway it uses · <span class="fyRangeLbl"></span> · the coloured bar uses the colour key below</div></div>
+            <button type="button" class="btn btn-sm btn-quiet" id="orgExport"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-download"></use></svg>Export</button>
+          </div>
+          <div class="d-flex flex-wrap gap-2 align-items-center">
+            <div class="d-flex flex-wrap gap-2" role="group" aria-label="Segment" id="orgSegs"></div>
+            <div class="ms-auto d-flex flex-wrap gap-2">
+              <label for="orgSearch" class="visually-hidden-label">Find organisation</label>
+              <input id="orgSearch" type="search" class="form-control form-control-sm" style="width:220px" placeholder="Find organisation or DB">
+              <label for="orgSort" class="visually-hidden-label">Sort by</label>
+              <select id="orgSort" class="form-select form-select-sm" style="width:auto">
+                <option value="total">Sort: fees collected</option><option value="pg">Sort: paid online via MCB</option><option value="share">Sort: % paid online</option>
+                <option value="cash">Sort: cash</option><option value="card">Sort: card swipe</option><option value="neft">Sort: bank transfer / direct UPI</option><option value="chq">Sort: cheque &amp; DD</option><option value="ecs">Sort: auto-debit (ECS)</option><option value="loan">Sort: education loan</option><option value="oth">Sort: other</option><option value="txns">Sort: number of payments</option><option value="na_br">Sort: branches without MCB gateway</option>
+              </select>
+            </div>
+          </div>
+          <div class="legend" id="orgLegend"></div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:1600px">
+              <thead><tr>
+                <th scope="col" data-adv="Organisation">School and gateways used</th><th scope="col" title="Which kind of gateway this school uses" data-adv="Partner segment">Gateway type</th><th scope="col" class="text-end" data-adv="Collections">Fees collected</th><th scope="col" style="width:200px" title="Each colour is a payment method; see the colour key above" data-adv="Mode mix">How fees were paid</th>
+                <th scope="col" class="text-end" data-adv="MCB PG">Online via MCB</th><th scope="col" class="text-end" title="NEFT, direct UPI, BBPS: online, but not through MCB" data-adv="NEFT / UPI / BBPS">Bank transfer / direct UPI</th><th scope="col" class="text-end">Cash</th><th scope="col" class="text-end">Card swipe</th><th scope="col" class="text-end">Cheque &amp; DD</th><th scope="col" class="text-end" title="Automatic bank debit (ECS / NACH)" data-adv="ECS / NACH">Auto-debit (ECS)</th><th scope="col" class="text-end" title="Fees paid through an education loan" data-adv="Loan Payments">Education loan</th><th scope="col" class="text-end" title="Challan, scholarship, salary deductions, refunds / transfers, credit notes, prepaid card and any unmapped mode">Other</th><th scope="col" class="text-end" title="Number of fee payments" data-adv="Txns">Payments</th>
+              </tr></thead>
+              <tbody id="orgRows"></tbody>
+            </table>
+          </div>
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 fs-7 text-muted-2">
+            <span id="orgCount"></span><button type="button" class="btn btn-sm btn-quiet" id="orgMore" hidden></button>
+          </div>
+        </div></div>
+
+        <footer class="fs-8 text-faint">Live from the MCB database · regular fees · FY <span class="fyLbl"></span>. Inactive schools and gateways that are switched off are left out.</footer>
+      </section>
+
+      <!-- =====================================================
+           VIEW 2 · INSTITUTES
+           ===================================================== -->
+      <section data-view="institutes" class="d-flex flex-column gap-3" aria-labelledby="h-inst" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div>
+            <h1 class="page-title" id="h-inst">Institutes</h1>
+            <div class="text-muted-2 mt-1">Every school, with how its fees were paid and how much MCB could gain · <span class="instRangeLbl"></span></div>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-quiet" id="exportCsv"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-download"></use></svg>Export view</button>
+            <a href="#campaigns" class="btn btn-primary"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-send"></use></svg>Create pay-link campaign</a>
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--mcb-violet-soft);border-color:transparent"><div class="card-body py-3">
+          <form class="d-flex flex-wrap align-items-end gap-2" id="schoolPickForm" autocomplete="off">
+            <div class="flex-grow-1" style="min-width:260px;max-width:640px">
+              <label for="schoolPick" class="form-label">Select a school to see its full payment data</label>
+              <input id="schoolPick" class="form-control" list="schoolList" placeholder="Type a school, organisation or DB name">
+            </div>
+            <button type="submit" class="btn btn-primary">Open school</button>
+            <span class="fs-8 text-muted-2 w-100" id="schoolPickHelp"></span>
+          </form>
+        </div></div>
+
+        <div class="vfbar" data-vf="institutes" aria-label="Institutes filters"></div>
+
+        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Saved views" id="savedViews"></div>
+
+        <details class="howto simple-only">
+          <summary>How to read this table</summary>
+          <ul>
+            <li><b>Institute and gateways used</b>: the school name, its number of branches and the payment gateway(s) it uses. Click “See which branch uses which gateway” when branches differ.</li>
+            <li><b>Students</b>: the most students who paid fees in any one month.</li>
+            <li><b>Paid online via MCB vs other ways</b>: violet = paid online through MCB, orange = paid any other way. The % is the online share.</li>
+            <li><b>Gateway type</b>: our partner (we earn), not our partner (we earn nothing), or no MCB gateway.</li>
+            <li><b>High fees?</b> “Yes” when fees are ₹35,000 or more per student, so a loan / EMI offer makes sense.</li>
+            <li><b>Opportunity (0–100)</b>: higher means a bigger chance to grow online payments. See the four boxes under the table for how it's calculated.</li>
+            <li><b>Offline money</b>: cash, card, cheque and DD collected (bank transfers, auto-debit and loans are not counted as offline). The small line shows the extra MCB commission per year if <span class="convLbl"></span> of it moved online.</li>
+            <li><b>Suggested next step</b>: what to do with this school. Hover to see why.</li>
+          </ul>
+        </details>
+
+        <div class="totals" id="instTotals" aria-label="Totals for this view"></div>
+
+        <div class="bulk d-flex flex-wrap align-items-center gap-2 px-3 py-2" id="bulkBar" role="region" aria-label="Bulk actions" hidden>
+          <b class="me-auto" id="bulkText"></b>
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-light" data-bs-toggle="dropdown" aria-expanded="false">Assign owner</button>
+            <ul class="dropdown-menu" id="assignMenu"></ul>
+          </div>
+          <button class="btn btn-sm btn-outline-light" id="bulkPipeline">Add to pipeline</button>
+          <button class="btn btn-sm btn-light" id="bulkCampaign">Add to campaign</button>
+          <button class="btn btn-sm btn-link text-white-50 text-decoration-none" id="bulkClear">Clear</button>
+        </div>
+
+        <div class="card overflow-hidden">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:1080px">
+              <thead><tr>
+                <th scope="col" class="ps-3" style="width:36px"><input class="form-check-input" type="checkbox" id="selAll" aria-label="Select all institutes in view"></th>
+                <th scope="col"><button class="btn btn-link p-0 text-reset text-decoration-none fw-semibold th-sort" data-sort="name" data-adv="Institute">Institute and gateways used</button></th>
+                <th scope="col" class="text-end" title="Most students who paid in any one month"><button class="btn btn-link p-0 text-reset text-decoration-none fw-semibold th-sort" data-sort="students" data-adv="Paying students (peak)">Students</button></th>
+                <th scope="col" class="text-end"><button class="btn btn-link p-0 text-reset text-decoration-none fw-semibold th-sort" data-sort="tot" data-adv="Collections">Fees collected</button></th>
+                <th scope="col" style="width:170px" title="Violet = paid online through MCB · orange = paid any other way" data-adv="PG vs offline">Paid online via MCB vs other ways</th>
+                <th scope="col" title="Our partner = we earn commission · not our partner = we earn nothing" data-adv="Partner segment">Gateway type</th>
+                <th scope="col" title="Fees of ₹35,000 or more per student: worth offering an education loan / EMI" data-adv="Loan fit">High fees?</th>
+                <th scope="col" style="width:130px" title="0–100: higher = bigger chance to grow online payments"><button class="btn btn-link p-0 text-reset text-decoration-none fw-semibold th-sort" data-sort="score" data-adv="Score">Opportunity (0–100)</button></th>
+                <th scope="col" class="text-end" title="Cash, card swipe, cheque and DD; below it, the extra MCB commission per year if part of it moved online"><button class="btn btn-link p-0 text-reset text-decoration-none fw-semibold th-sort" data-sort="off" data-adv="Convertible">Offline money</button></th>
+                <th scope="col" data-adv="Next play">Suggested next step</th>
+                <th scope="col" class="pe-3">Owner</th>
+              </tr></thead>
+              <tbody id="instRows"></tbody>
+            </table>
+          </div>
+          <div class="text-center py-5 px-3" id="instEmpty" hidden>
+            <div class="fw-bold fs-6">No institutes match this view</div>
+            <div class="text-muted-2 mx-auto mt-1" style="max-width:460px">No institute in this financial year matches these filters.</div>
+            <button class="btn btn-quiet mt-3" id="resetFilters">Reset filters</button>
+          </div>
+          <div class="text-center py-2 border-top" id="instMoreWrap" hidden><button type="button" class="btn btn-sm btn-quiet" id="instMore"></button></div>
+          <div class="d-flex flex-wrap justify-content-between gap-2 px-3 py-2 fs-7 text-muted-2 border-top">
+            <span id="instCount"></span>
+            <span>Offline money = cash, card, cheque and DD, <span class="instRangeLbl"></span> · commission / yr assumes <span class="convLbl"></span> moves online at a <span class="takeLbl"></span> rate</span>
+          </div>
+        </div>
+
+        <div class="fw-semibold">How the opportunity score (0–100) is calculated</div>
+        <div class="adv-note adv-only">score = round(100 × (0.45 · min(1, log10(offline) / log10(2e8)) + 0.30 · (1 − PG share) + 0.15 · [status nopg | low] + 0.10 · [collections / peak paying students ≥ ₹35,000])) · status: dormant = no collections in last 2 months, nopg = PG ≤ ₹2 / month, low = PG share &lt; 10%</div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3" aria-label="How the score works">
+          <div class="col"><div class="card h-100"><div class="card-body py-3"><b>Offline money · up to 45 points</b><div class="fs-7 text-muted-2 mt-1">More cash, card, cheque and DD means more points. Scaled so one very large college doesn't push out twenty smaller schools.</div></div></div></div>
+          <div class="col"><div class="card h-100"><div class="card-body py-3"><b>Low online share · up to 30 points</b><div class="fs-7 text-muted-2 mt-1">The less a school pays online through MCB, the more points.</div></div></div></div>
+          <div class="col"><div class="card h-100"><div class="card-body py-3"><b>Hardly uses the gateway · 15 points</b><div class="fs-7 text-muted-2 mt-1">Given when nothing, or under 10% of fees, is paid online through MCB.</div></div></div></div>
+          <div class="col"><div class="card h-100"><div class="card-body py-3"><b>High fees · 10 points</b><div class="fs-7 text-muted-2 mt-1">Given when fees are ₹35,000 or more per student, so a loan or EMI offer makes sense.</div></div></div></div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           VIEW 3 · INSTITUTE 360  (#institute/<id>)
+           ===================================================== -->
+      <section data-view="institute" class="d-flex flex-column gap-3" aria-labelledby="i360Name" hidden>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+          <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="#institutes">Institutes</a></li><li class="breadcrumb-item active" aria-current="page" id="i360Crumb"></li></ol></nav>
+          <form class="d-flex gap-2" id="i360PickForm" autocomplete="off" style="min-width:min(100%,420px)">
+            <label for="i360Pick" class="visually-hidden-label">Switch school</label>
+            <input id="i360Pick" class="form-control form-control-sm" list="schoolList" placeholder="Switch school…">
+            <button type="submit" class="btn btn-sm btn-quiet">Open</button>
+          </form>
+        </div>
+
+        <div class="vfbar" data-vf="institute" aria-label="School page filters"></div>
+
+        <div class="card"><div class="card-body d-flex flex-wrap align-items-center gap-3 gap-lg-4">
+          <div class="score-badge"><b id="i360Score"></b><span>opportunity</span></div>
+          <div class="flex-grow-1" style="flex-basis:380px;min-width:0">
+            <h1 class="m-0 fw-bold" style="font-size:1.6rem;letter-spacing:-.01em;text-wrap:balance" id="i360Name"></h1>
+            <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3 mt-2 fs-7 text-muted-2" id="i360Meta"></div>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-quiet" id="i360LogCall"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-telephone"></use></svg>Log a call</button>
+            <button type="button" class="btn btn-quiet" id="i360Pipeline"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-kanban"></use></svg>Add to pipeline</button>
+            <button type="button" class="btn btn-primary" id="i360Remind"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-send"></use></svg>Send pay-link reminder</button>
+          </div>
+        </div></div>
+
+        <div class="card"><div class="card-body py-3"><h2 class="card-title mb-2">Account</h2><div id="i360Account"></div></div></div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3" id="i360Kpis"></div>
+
+        <div class="row g-3">
+          <div class="col-xl-7">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex flex-wrap justify-content-between gap-2">
+                <div><h2 class="card-title" data-adv="Monthly collections: PG vs offline">Fees collected each month</h2><div class="card-sub">Hover a column for that month's exact amounts. Inside: violet = paid online through MCB, orange = paid any other way.</div></div>
+                <div class="legend"><span><i class="sw" data-sw="pg"></i>Paid online via MCB</span><span><i class="sw" data-sw="cash"></i>Paid any other way</span></div>
+              </div>
+              <div class="chart" id="i360Chart" role="img" aria-label="Monthly gateway and offline collections. Figures are also in the timeline below."></div>
+            </div></div>
+          </div>
+          <div class="col-xl-5">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3" id="i360Setup"></div></div>
+          </div>
+        </div>
+
+        <div class="card ai-card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-start gap-2">
+            <div><h2 class="card-title d-flex align-items-center gap-2"><span class="ai-dot" aria-hidden="true"></span>AI suggestions for this school</h2>
+              <div class="card-sub">Reads this school's payment modes, gateways and branches and recommends how to move more fees onto MCB-partner gateways</div></div>
+            <button type="button" class="btn btn-primary" data-ai-run="institute">Get suggestions</button>
+          </div>
+          <div id="aiOutInst" class="d-flex flex-column gap-2" aria-live="polite"></div>
+        </div></div>
+
+        <div class="card" id="i360Types"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Payment-type analysis">How this school's fees were paid: by payment type</h2>
+              <div class="card-sub"><span class="t-s">Longest bar = the way most parents pay. The ₹ amount and % of all fees are printed on each bar.</span><span class="t-a">Collections by payment mode for the selected months · share of GMV · txns · avg ticket · latest month vs previous</span></div></div>
+            <div class="legend" id="i360TypeLegend"></div>
+          </div>
+          <div id="i360TypeBars" class="d-flex flex-column gap-1"></div>
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mt-2">
+            <div><b data-adv="Monthly trend per payment mode">Each payment type, month by month</b>
+              <div class="fs-7 text-muted-2"><span class="t-s">One small chart per payment type. Taller bar = more money that month. The busiest month is highlighted.</span><span class="t-a">Per-mode monthly ₹ with peak month, txns and MoM change</span></div></div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3" id="i360TypeGrid"></div>
+        </div></div>
+
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <div><h2 class="card-title" data-adv="Payment modes × month">Every payment method, month by month</h2><div class="card-sub">Column height = fees that month (₹ Cr), split by payment method. The table lists every method in full. Hover a cell for the number of payments. · <span id="i360ModeSub"></span></div></div>
+            <div class="legend" id="i360ModeLegend"></div>
+          </div>
+          <div class="chart" id="i360ModeChart" role="img" aria-label="Monthly collections by payment mode. Figures are also in the table below."></div>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover align-middle" style="min-width:820px">
+              <thead id="i360ModeHead"></thead>
+              <tbody id="i360ModeRows"></tbody>
+            </table>
+          </div>
+        </div></div>
+
+        <div class="row g-3">
+          <div class="col-xl-7">
+            <div class="card h-100"><div class="card-body">
+              <h2 class="card-title" data-adv="Next best actions">What to do next with this school</h2><div class="card-sub mb-2">Most valuable first · the button on each starts it</div>
+              <div id="i360Nba"></div>
+            </div></div>
+          </div>
+          <div class="col-xl-5">
+            <div class="sim-dark h-100 p-4 d-flex flex-column gap-3">
+              <div><h2 class="fs-6 fw-bold text-white m-0">What if this school's parents paid online?</h2><div class="fs-7" style="color:#BDB7D6">Drag the slider: how much of its cash, card, cheque and DD moves to MCB pay links. Scaled to a full year from <span class="instRangeLbl"></span>.</div></div>
+              <div class="d-flex justify-content-between align-items-baseline gap-2"><label for="conv360" class="fw-semibold">Offline money moved online</label><span class="fs-4 fw-bold" style="color:#FFB088" id="conv360Out"></span></div>
+              <input type="range" class="form-range" id="conv360" min="0" max="80" step="5" value="30">
+              <div class="row g-2">
+                <div class="col-6"><div class="stat-box h-100"><div class="fs-8" style="color:#BDB7D6">Extra fees paid online / yr</div><div class="fw-bold fs-5 text-white" id="i360Gmv"></div></div></div>
+                <div class="col-6"><div class="stat-box h-100"><div class="fs-8" style="color:#BDB7D6">% paid online after</div><div class="fw-bold fs-5 text-white" id="i360Share"></div></div></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-baseline pt-3 mt-auto" style="border-top:1px solid var(--mcb-night-line)"><span class="fw-semibold">Extra MCB commission / yr</span><span class="fs-3 fw-bold text-white" id="i360Rev"></span></div>
+              <div class="fs-8" style="color:#BDB7D6">At a <span class="takeLbl"></span> commission rate. Loan fees not included.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card"><div class="card-body"><div class="row g-4">
+          <div class="col-lg-7"><h2 class="card-title mb-2">Timeline</h2><div id="i360Timeline"></div></div>
+          <div class="col-lg-5 d-flex flex-column gap-2">
+            <label for="i360Note" class="card-title">Log a note</label>
+            <textarea id="i360Note" class="form-control" rows="5" placeholder="Call outcome, objections, next step and date"></textarea>
+            <div class="d-flex flex-wrap gap-2">
+              <label for="i360Date" class="visually-hidden-label">Follow-up date</label>
+              <input id="i360Date" type="date" class="form-control" style="width:auto">
+              <button type="button" class="btn btn-night" id="i360Save">Save note</button>
+            </div>
+          </div>
+        </div></div></div>
+      </section>
+
+      <!-- =====================================================
+           VIEW 4 · GATEWAYS & LOAN PARTNERS
+           ===================================================== -->
+      <section data-view="coverage" class="d-flex flex-column gap-4" aria-labelledby="h-cov" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div><h1 class="page-title" id="h-cov">Gateways</h1><div class="text-muted-2 mt-1">Which payment gateways carry the online fees and which of them are our partners</div></div>
+        </div>
+
+        <div class="vfbar" data-vf="coverage" aria-label="Gateway filters"></div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3" id="gwSec"></div>
+
+        <div class="row g-3">
+          <div class="col-xl-6">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex flex-wrap justify-content-between gap-2">
+                <div><h2 class="card-title" data-adv="PG volume by month × partner segment">Online fees each month, by gateway type</h2><div class="card-sub">Hover a column for that month's exact amounts; the % inside is each gateway type's part. Dark violet = our partner gateways (we earn). Click a month to see the schools behind it.</div></div>
+                <div class="legend" id="pgLegend"></div>
+              </div>
+              <div class="chart" id="pgChart" role="img" aria-label="Monthly gateway volume by partner segment"></div>
+            </div></div>
+          </div>
+          <div class="col-xl-6">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-2">
+              <h2 class="card-title mb-1" data-adv="Gateway signals">Things worth noticing</h2>
+              <div id="gwSignals" class="d-flex flex-column gap-2"></div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div><h2 class="card-title" data-adv="Partner vs non-partner segments">Side by side: schools on our partner gateway vs the rest</h2><div class="card-sub">Each column is one group of schools; read down a column to compare · <span class="fyRangeLbl"></span></div></div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:900px">
+              <thead id="cmpHead"></thead>
+              <tbody id="cmpRows"></tbody>
+            </table>
+          </div>
+          <div class="legend" id="cmpLegend"></div>
+        </div></div>
+
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div class="seg" role="group" aria-label="Show gateways">
+              <input type="radio" class="btn-check" name="gwSeg" id="gwSegAll" value="all" checked><label class="btn" for="gwSegAll">All gateways</label>
+              <input type="radio" class="btn-check" name="gwSeg" id="gwSegP" value="partner"><label class="btn" for="gwSegP">Our partners</label>
+              <input type="radio" class="btn-check" name="gwSeg" id="gwSegN" value="non_partner"><label class="btn" for="gwSegN">Not our partner</label>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Gateway leaderboard">Gateways ranked by online fees</h2><div class="card-sub"><span class="fyRangeLbl"></span> · “% of online fees” is each gateway's share of all online fees through MCB</div></div>
+            <div class="seg" role="group" aria-label="Sort gateways by">
+              <input type="radio" class="btn-check" name="gwSort" id="gsVol" value="vol" checked><label class="btn" for="gsVol">Biggest</label>
+              <input type="radio" class="btn-check" name="gwSort" id="gsGrowth" value="growth"><label class="btn" for="gsGrowth">Fastest growing in&nbsp;<span class="lastMonShort"></span></label>
+              <input type="radio" class="btn-check" name="gwSort" id="gsTicket" value="ticket"><label class="btn" for="gsTicket">Biggest average payment</label>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:960px">
+              <thead><tr><th scope="col">Gateway</th><th scope="col" data-adv="IsMCBPartner">Our partner?</th><th scope="col" class="text-end" data-adv="PG volume">Online fees</th><th scope="col" style="width:200px" data-adv="Share of PG volume">% of online fees</th><th scope="col" class="text-end" data-adv="Txns">Payments</th><th scope="col" class="text-end" data-adv="Avg ticket">Average payment</th><th scope="col" class="text-end lastMonLbl"></th><th scope="col" class="text-end">Change vs <span class="prevMonLbl"></span></th><th scope="col">Note</th></tr></thead>
+              <tbody id="gwRows"></tbody>
+            </table>
+          </div>
+          <div class="fs-8 text-faint" id="gwRest"></div>
+        </div></div>
+
+        <div class="card" id="masterSec"><div class="card-body d-flex flex-column gap-3">
+          <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div><h2 class="card-title" data-adv="Gateway master (MasterPaymentGateways · IsActive 1)">All gateways in use</h2>
+              <div class="card-sub">Every payment gateway currently in use, whether it is our partner, and how many schools use it</div></div>
+            <div class="d-flex flex-wrap gap-2" role="group" aria-label="Gateway status" id="masterKinds"></div>
+          </div>
+          <details class="howto simple-only">
+            <summary>How to read this</summary>
+            <ul>
+              <li><b>Our partner (we earn)</b>: MCB earns commission on fees paid through this gateway.</li>
+              <li><b>Not our partner</b>: the gateway is in use, but MCB earns nothing on it. Schools here are candidates to switch.</li>
+              <li><b>Not in our gateway list</b>: schools use this gateway name, but it is missing from our gateway list. Check the setup.</li>
+              <li>Gateways that are switched off are not shown.</li>
+              <li><b>Online fees</b>: each school's online fees credited to the gateway(s) it uses. A school with two gateways is split equally.</li>
+            </ul>
+          </details>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle" style="min-width:1000px">
+              <thead><tr>
+                <th scope="col">Gateway</th><th scope="col" data-adv="Status">Type</th><th scope="col" class="text-center" data-adv="IsActive">In use?</th><th scope="col" class="text-center" data-adv="IsMCBPartner">Our partner?</th><th scope="col" class="text-center" title="Does this gateway share commission with MCB?" data-adv="CommissionSharing">Shares commission?</th>
+                <th scope="col" class="text-end" data-adv="Institutes">Schools</th><th scope="col" class="text-end">Branches</th><th scope="col" class="text-end" data-adv="PG volume">Online fees</th><th scope="col" class="text-end" data-adv="Txns">Payments</th><th scope="col" class="text-end"><span class="lastMonLbl"></span></th><th scope="col" class="text-end">Change vs <span class="prevMonLbl"></span></th>
+              </tr></thead>
+              <tbody id="masterRows"></tbody>
+            </table>
+          </div>
+          <div class="adv-note adv-only">Partner = IsActive 1 AND IsMCBPartner 1 · non-partner = IsActive 1, IsMCBPartner 0 · IsActive 0 hidden · PG volume = PaymentModeID 5 attributed to the org's mapped gateway(s), split evenly</div>
+        </div></div>
+
+      </section>
+
+      <!-- =====================================================
+           VIEW 4b · LOAN PARTNERS
+           ===================================================== -->
+      <section data-view="loans" class="d-flex flex-column gap-4" aria-labelledby="h-loans" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div><h1 class="page-title" id="h-loans">Loan partners</h1><div class="text-muted-2 mt-1" id="loanSecSub"></div></div>
+          <nav class="d-flex flex-wrap gap-2" aria-label="On this page">
+            <a class="pill" href="#loans" data-jump="matrixSec">What to sell to whom</a>
+          </nav>
+        </div>
+
+        <div class="vfbar" data-vf="loans" aria-label="Loan filters"></div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3" id="loanKpis"></div>
+
+        <div class="row g-3">
+          <div class="col-xl-5">
+            <div class="card h-100"><div class="card-body d-flex flex-column gap-3">
+              <div><h2 class="card-title" data-adv="Loan Payments by month">Fees paid by loan, each month</h2><div class="card-sub" id="loanChartSub"></div></div>
+              <div class="chart" id="loanChart" role="img" aria-label="Monthly loan disbursals"></div>
+            </div></div>
+          </div>
+          <div class="col-xl-7">
+            <div class="card h-100"><div class="card-body fit-height">
+              <h2 class="card-title mb-2">Partner scorecard</h2>
+              <div class="table-responsive scroll-table" id="partnerScroll" tabindex="0" aria-label="Partner scorecard, scrollable">
+                <table class="table table-hover align-middle mb-0" style="min-width:540px">
+                  <thead><tr><th scope="col">Partner</th><th scope="col" class="text-end" title="Schools mapped to this partner, and how many of them had a loan payment">Institutes</th><th scope="col" class="text-end" title="Fees paid through this partner in these months">Disbursed</th><th scope="col" class="text-end" title="Number of loan payments">Loans</th><th scope="col">Status</th></tr></thead>
+                  <tbody id="partnerRows"></tbody>
+                </table>
+              </div>
+              <div class="fs-8 text-muted-2 mt-2" id="partnerNote"></div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="card" id="matrixSec"><div class="card-body d-flex flex-column gap-3">
+          <div><h2 class="card-title" data-adv="Upsell matrix (PG status × loan fit)">What to sell to whom</h2><div class="card-sub">Rows: how much the school pays online. Columns: whether its fees are high enough for a loan / EMI offer. Each box names what to sell and lists the biggest schools. The number is how many schools are in it.</div></div>
+          <div class="table-responsive"><div class="matrix" id="matrix"></div></div>
+        </div></div>
+      </section>
+
+      <!-- =====================================================
+           VIEW 5 · CAMPAIGN STUDIO
+           ===================================================== -->
+      <section data-view="campaigns" class="d-flex flex-column gap-3" aria-labelledby="h-camp" hidden>
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <nav aria-label="Breadcrumb"><ol class="breadcrumb align-items-center"><li class="breadcrumb-item"><a href="#campaigns">Campaigns</a></li><li class="breadcrumb-item active" aria-current="page">New pay-link campaign</li><li class="ms-2"><span class="chip chip-gray" id="campStatus">Draft</span></li></ol></nav>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-quiet" id="saveDraftBtn">Save draft</button>
+            <button type="button" class="btn btn-quiet" id="testSendBtn">Send test to me</button>
+            <button type="button" class="btn btn-primary" id="scheduleBtn"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-calendar-check"></use></svg>Schedule campaign</button>
+          </div>
+        </div>
+        <div>
+          <label for="cName" class="form-label">Campaign name</label>
+          <input id="cName" class="form-control border-0 border-bottom rounded-0 bg-transparent px-0 fw-bold" style="font-size:1.6rem;max-width:760px;box-shadow:none" value="Term fee — pay before due date">
+          <h1 class="visually-hidden" id="h-camp">Campaign studio</h1>
+        </div>
+
+        <div class="row g-3 align-items-start">
+          <div class="col-xl-7 d-flex flex-column gap-3">
+            <!-- Step 1 -->
+            <div class="card"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex align-items-center gap-2"><span class="step-num">1</span><h2 class="card-title m-0">Audience</h2></div>
+              <div class="seg align-self-start" role="group" aria-label="Audience scope">
+                <input type="radio" class="btn-check" name="cScope" id="csSel" value="selected" checked><label class="btn" for="csSel">Selected institutes</label>
+                <input type="radio" class="btn-check" name="cScope" id="csAll" value="all"><label class="btn" for="csAll">All consented institutes (network-wide)</label>
+              </div>
+              <div class="fs-7 text-muted-2" id="scopeHelp"></div>
+              <div class="border rounded-3 overflow-auto"><div style="min-width:680px">
+                <div class="aud-row aud-head"><span></span><span>Institute</span><span>SMS</span><span>WhatsApp</span><span>App</span><span class="text-end" title="Active students across all branches of the organisation; shown once the institute is ticked">Total students</span><span class="text-end" title="Students with unpaid fee instalments due this financial year (1 Apr - 31 Mar), from the school's fee search index; click the number for the list">Fee due</span></div>
+                <div id="audRows"></div>
+              </div></div>
+              <div class="fs-7 text-muted-2" id="dueSummary" aria-live="polite"></div>
+              <div>
+                <div class="fw-semibold mb-2">Which parents</div>
+                <div class="d-flex flex-wrap gap-2" id="parentFilters">
+                  <input type="checkbox" class="btn-check" id="pf1" value="due_7d" checked><label class="pill" for="pf1">Fee due in the next 7 days</label>
+                  <input type="checkbox" class="btn-check" id="pf3" value="partially_paid"><label class="pill" for="pf3">Partially paid</label>
+                  <span class="pill" style="background:var(--mcb-surface-2);color:var(--mcb-muted)"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-lock"></use></svg>Skips anyone who has already paid</span>
+                </div>
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3 mb-2">
+                  <div class="fw-semibold">Fee due month <span class="fs-8 text-muted-2 fw-normal">· none ticked = the whole financial year</span></div>
+                  <button type="button" class="btn btn-link btn-sm p-0" id="pfMonthClear" hidden>Clear months</button>
+                </div>
+                <div class="d-flex flex-wrap gap-2" id="pfMonths"></div>
+              </div>
+            </div></div>
+
+            <!-- Step 2 -->
+            <div class="card"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex align-items-center gap-2"><span class="step-num">2</span><h2 class="card-title m-0">Channels</h2></div>
+              <div class="row g-2" id="chCards"></div>
+              <div class="note d-flex flex-wrap align-items-center gap-2">
+                <b class="me-1">Cheapest first:</b><span class="chip chip-gray">App push</span><span class="text-muted-2">→ unread after 4 h →</span><span class="chip chip-gray">WhatsApp</span>
+              </div>
+            </div></div>
+
+            <!-- Step 3 -->
+            <div class="card"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex align-items-center gap-2"><span class="step-num">3</span><h2 class="card-title m-0">Schedule app notifications around each institute's due date</h2></div>
+              <div class="fs-7 rounded p-2" id="schedNote" aria-live="polite"></div>
+              <div class="cad d-flex flex-wrap gap-2" role="group" aria-label="Reminder days" id="cadence"></div>
+              <div class="row g-2 fs-7" id="schedRules">
+                <div class="col-md-4"><div class="stat-box h-100"><div class="text-muted-2">Quiet hours</div><b>Send 9:00 am – 8:00 pm only</b></div></div>
+                <div class="col-md-4"><div class="stat-box h-100"><div class="text-muted-2">Frequency cap</div><b>One message per parent per day</b></div></div>
+                <div class="col-md-4"><div class="stat-box h-100"><div class="text-muted-2">Stop rule</div><b>Stops the moment the fee is paid</b></div></div>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="col-xl-5 d-flex flex-column gap-3">
+            <div class="card"><div class="card-body d-flex flex-column gap-3">
+              <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <h2 class="card-title m-0">Preview</h2>
+                <div class="seg" role="group" aria-label="Preview channel">
+                  <input type="radio" class="btn-check" name="pv" id="pvSms" value="sms"><label class="btn" for="pvSms">SMS</label>
+                  <input type="radio" class="btn-check" name="pv" id="pvWa" value="wa" checked><label class="btn" for="pvWa">WhatsApp</label>
+                  <input type="radio" class="btn-check" name="pv" id="pvApp" value="app"><label class="btn" for="pvApp">App</label>
+                </div>
+              </div>
+              <label class="d-flex align-items-center gap-2 fs-7 fw-semibold" id="pvTplRow" hidden>Template
+                <select class="form-select form-select-sm" id="pvTpl"></select></label>
+              <div class="phone" id="phone" aria-live="polite"></div>
+              <div class="fs-8 text-faint text-center">Tokens in violet are filled per parent at send time.</div>
+            </div></div>
+
+            <div class="card"><div class="card-body d-flex flex-column gap-3">
+              <h2 class="card-title m-0">Before you send</h2>
+              <div class="row g-2">
+                <div class="col-6"><div class="stat-box h-100" style="background:var(--mcb-violet-soft)"><div class="fs-8 text-muted-2">Institutes</div><div class="fs-4 fw-bold text-violet" id="cInst"></div></div></div>
+                <div class="col-6"><div class="stat-box h-100" style="background:var(--mcb-violet-soft)"><div class="fs-8 text-muted-2">Students, at most</div><div class="fs-4 fw-bold text-violet" id="cReach"></div></div></div>
+                <div class="col-6"><div class="stat-box h-100"><div class="fs-8 text-muted-2">App notifications, at most</div><div class="fs-5 fw-bold" id="cMsgs"></div></div></div>
+                <div class="col-6"><div class="stat-box h-100"><div class="fs-8 text-muted-2">Channels on</div><div class="fs-5 fw-bold" id="cChans"></div></div></div>
+              </div>
+              <ul class="list-unstyled m-0 d-flex flex-column gap-2 fs-7" id="cChecks"></ul>
+            </div></div>
+
+            <div class="card" style="border-style:dashed"><div class="card-body d-flex flex-column gap-3">
+              <h2 class="card-title m-0">Results</h2>
+              <div class="row row-cols-5 g-1 text-center fs-8 text-muted-2">
+                <div class="col"><div class="fs-5 fw-bold text-faint">—</div>Sent</div>
+                <div class="col"><div class="fs-5 fw-bold text-faint">—</div>Delivered</div>
+                <div class="col"><div class="fs-5 fw-bold text-faint">—</div>Link opened</div>
+                <div class="col"><div class="fs-5 fw-bold text-faint">—</div>Paid online</div>
+                <div class="col"><div class="fs-5 fw-bold text-faint">—</div>₹ collected</div>
+              </div>
+              <div class="fs-7 text-muted-2">Fills in after the first send. Every payment is tied to its link, so collections, gateway volume and MCB revenue are attributed to this campaign and to each institute.</div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           VIEW · DUE MONTH-WISE ORGANISATIONS
+           ===================================================== -->
+      <section data-view="duemonths" class="d-flex flex-column gap-3" aria-labelledby="h-dm" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div><h1 class="page-title" id="h-dm">Due month-wise organisations</h1><div class="text-muted-2 mt-1" id="dmSummary">Schools with fees due in the chosen month</div></div>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <label class="visually-hidden" for="dmMonth">Month</label><select class="form-select form-select-sm" id="dmMonth" style="width:auto"></select>
+            <label class="visually-hidden" for="dmYear">Year</label><select class="form-select form-select-sm" id="dmYear" style="width:auto"></select>
+            <label class="visually-hidden" for="dmSearch">Search schools</label>
+            <input type="search" class="form-control form-control-sm" id="dmSearch" placeholder="Search school" style="width:220px">
+          </div>
+        </div>
+        <div class="card"><div class="card-body d-flex flex-column gap-2">
+          <div><h2 class="card-title" id="dmTitle">Schools</h2>
+            <div class="card-sub">From MCBMaster (USP_GET_OrganisationDueMonths): schools with a fee due in this month. Demo organisations are left out.</div></div>
+          <div class="table-responsive"><table class="table table-sm table-hover align-middle mb-0" style="min-width:640px">
+            <thead><tr><th scope="col" class="text-end" style="width:4rem">#</th><th scope="col">School</th><th scope="col">Database</th><th scope="col" class="text-end">Organisation ID</th><th scope="col">Due month</th></tr></thead>
+            <tbody id="dmRows"></tbody>
+          </table></div>
+        </div></div>
+      </section>
+
+      <!-- =====================================================
+           VIEW · WHATSAPP REPORT
+           ===================================================== -->
+      <section data-view="wareport" class="d-flex flex-column gap-3" aria-labelledby="h-war" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div><h1 class="page-title" id="h-war">WhatsApp report</h1><div class="text-muted-2 mt-1" id="warSummary">Fee reminders sent from Campaigns, per institution</div></div>
+          <div class="d-flex align-items-center gap-2">
+            <label class="visually-hidden" for="warDays">Period</label>
+            <select class="form-select form-select-sm" id="warDays" style="width:auto">
+              <option value="1">Today</option><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option>
+              <option value="90">Last 90 days</option><option value="365">Last 12 months</option></select>
+            <button type="button" class="btn btn-sm btn-quiet" id="warRefresh">Refresh</button>
+          </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3" id="warKpis"></div>
+        <div class="card"><div class="card-body d-flex flex-column gap-2">
+          <div><h2 class="card-title">By institution</h2>
+            <div class="card-sub">Every WhatsApp message sent from this portal: campaigns and "Send test to me". Test = sent to the test number, not to the parent. Delivered, read and failed come from WhatsApp through AiSensy; taps are people pressing the message's buttons. Click a row to see its messages.</div></div>
+          <div class="table-responsive"><table class="table table-sm table-hover align-middle mb-0" style="min-width:1100px">
+            <thead><tr><th scope="col">Institution</th><th scope="col">Test / live</th><th scope="col" class="text-end">Sent</th><th scope="col" class="text-end">Delivered</th><th scope="col" class="text-end">Read</th>
+              <th scope="col" class="text-end">Failed</th><th scope="col" class="text-end">Download App</th><th scope="col" class="text-end">Check EMI &amp; Loan</th>
+              <th scope="col" class="text-end">Students</th><th scope="col">First sent</th><th scope="col">Last sent</th></tr></thead>
+            <tbody id="warRows"></tbody>
+          </table></div>
+        </div></div>
+        <div class="card" id="warDetail" hidden><div class="card-body d-flex flex-column gap-2">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2"><h2 class="card-title m-0" id="warDetailTitle"></h2>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+              <label class="fs-7 text-muted-2" for="warTap">Buttons tapped</label>
+              <select class="form-select form-select-sm w-auto" id="warTap">
+                <option value="">All messages</option><option value="any">Any button tapped</option>
+                <option value="app">Download App</option><option value="emi">Check EMI &amp; Loan</option>
+                <option value="none">No button tapped</option>
+              </select>
+              <span class="fs-7 text-muted-2" id="warTapCount"></span>
+              <button type="button" class="btn btn-sm btn-link" id="warDetailClose">Close</button>
+            </div></div>
+          <div class="table-responsive"><table class="table table-sm align-middle mb-0" style="min-width:1100px">
+            <thead><tr><th scope="col">Sent</th><th scope="col">Test / live</th><th scope="col">Student</th><th scope="col">Number</th><th scope="col">Template · pay link</th><th scope="col">Status</th><th scope="col">Buttons tapped</th></tr></thead>
+            <tbody id="warMsgRows"></tbody>
+          </table></div>
+        </div></div>
+      </section>
+
+      <!-- =====================================================
+           VIEW · WHATSAPP TEMPLATES
+           ===================================================== -->
+      <section data-view="templates" class="d-flex flex-column gap-3" aria-labelledby="h-tpl" hidden>
+        <div><h1 class="page-title" id="h-tpl">WhatsApp templates</h1><div class="text-muted-2 mt-1" id="tplSummary">Fee-reminder templates in AiSensy</div></div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-3" id="tplGrid"></div>
+      </section>
+
+      <!-- =====================================================
+           VIEW 6 · UPSELL PIPELINE
+           ===================================================== -->
+      <section data-view="pipeline" class="d-flex flex-column gap-3" aria-labelledby="h-pipe" hidden>
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div><h1 class="page-title" id="h-pipe">Upsell pipeline</h1><div class="text-muted-2 mt-1">Every gateway, adoption and loan-partner deal, from first flag to live · value = yearly MCB revenue upside</div></div>
+          <a href="#institutes" class="btn btn-primary"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-plus-lg"></use></svg>Add from Institutes</a>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3">
+          <div class="col"><div class="h-100 p-3 rounded-3" style="background:var(--mcb-night);color:#ECEAF5"><div class="fs-7" style="color:#BDB7D6">Quarter target</div><div class="fs-4 fw-bold text-white mt-1" id="pTarget"></div><div class="fs-8 mt-1" style="color:#BDB7D6" id="pTargetSub">Set in Revenue settings</div></div></div>
+          <div class="col"><div class="card h-100"><div class="card-body py-3"><div class="kpi-label">Open pipeline</div><div class="fs-4 fw-bold mt-1" id="pOpen"></div><div class="kpi-sub mt-1" id="pOpenN"></div></div></div></div>
+          <div class="col"><div class="card h-100"><div class="card-body py-3"><div class="kpi-label">Weighted by stage</div><div class="fs-4 fw-bold text-violet mt-1" id="pWeighted"></div><div class="kpi-sub mt-1" id="pWeightedSub"></div></div></div></div>
+          <div class="col"><div class="card h-100" style="background:var(--mcb-orange-soft);border-color:var(--mcb-orange-line)"><div class="card-body py-3"><div class="kpi-label text-orange fw-semibold">Stalled over 14 days</div><div class="fs-4 fw-bold text-orange mt-1" id="pStalled"></div><div class="kpi-sub mt-1">Nudge or reassign</div></div></div></div>
+        </div>
+        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Filter by play" id="playFilter"></div>
+        <div class="fs-8 text-faint">Drag a card to another stage, or use its menu.</div>
+        <div class="kanban" id="kanban"></div>
+        <div class="card"><div class="card-body d-flex flex-column gap-3">
+          <div><h2 class="card-title">Team scoreboard</h2><div class="card-sub">Open deals and weighted upside by owner · credit lands when the first gateway or loan payment posts</div></div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-2" id="scoreboard"></div>
+        </div></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- ============ Revenue settings (offcanvas) ============ -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="settingsPanel" aria-labelledby="settingsTitle">
+  <div class="offcanvas-header border-bottom">
+    <h2 class="offcanvas-title fs-5 fw-bold" id="settingsTitle">Revenue settings</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column gap-4">
+    <p class="text-muted-2 fs-7 m-0">Every revenue figure in the portal is computed from these. Replace them with your contracted rates. Changes save automatically.</p>
+    <div>
+      <div class="d-flex justify-content-between"><label for="setTake" class="fw-semibold">Default commission rate</label><b id="setTakeOut"></b></div>
+      <input type="range" class="form-range" id="setTake" min="5" max="100" step="5">
+      <div class="fs-8 text-faint">The % MCB earns on fees paid online through our partner gateways (other gateways earn nothing). Used when the filter bar's commission rate is “Default”.</div>
+    </div>
+    <div>
+      <div class="d-flex justify-content-between"><label for="setLoan" class="fw-semibold">Loan processing fee</label><b id="setLoanOut"></b></div>
+      <input type="range" class="form-range" id="setLoan" min="0" max="4" step="0.25">
+      <div class="fs-8 text-faint">Percent of the disbursed amount paid to MCB by the loan partner.</div>
+    </div>
+    <div>
+      <div class="d-flex justify-content-between"><label for="setConv" class="fw-semibold">Target: share of offline money moved online</label><b id="setConvOut"></b></div>
+      <input type="range" class="form-range" id="setConv" min="10" max="60" step="5">
+      <div class="fs-8 text-faint">Used for every “extra commission” estimate and for pipeline deal values.</div>
+    </div>
+    <div>
+      <label for="setTarget" class="fw-semibold mb-1">Quarter revenue target (₹)</label>
+      <input type="number" class="form-control" id="setTarget" min="0" step="10000" placeholder="e.g. 5000000">
+      <div class="fs-8 text-faint mt-1">Shown on the Upsell pipeline.</div>
+    </div>
+    <div class="fs-8 text-faint" id="settingsSaved" aria-live="polite"></div>
+    <div class="note" id="settingsNote"></div>
+  </div>
+</div>
+
+<!-- ============ Consent register (modal) ============ -->
+<div class="modal fade" id="consentModal" tabindex="-1" aria-labelledby="consentTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h2 class="modal-title fs-5 fw-bold" id="consentTitle">Consent register</h2><div class="fs-7 text-muted-2">Reminders go out only where the institute has granted that channel.</div></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <label for="consentSearch" class="visually-hidden-label">Find institute</label>
+          <input id="consentSearch" type="search" class="form-control" style="max-width:360px" placeholder="Find institute or DB name">
+          <select id="consentFilter" class="form-select" style="width:auto" aria-label="Consent state">
+            <option value="all">All states</option><option value="granted">Granted (any channel)</option><option value="pending">Pending</option><option value="none">Not asked</option>
+          </select>
+        </div>
+        <div class="fs-8 text-faint mb-2">Click a channel to cycle Not asked → Pending → Granted. Saved immediately.</div>
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead><tr><th scope="col">Institute</th><th scope="col">SMS</th><th scope="col">WhatsApp</th><th scope="col">App push</th><th scope="col" class="text-end">Action</th></tr></thead>
+            <tbody id="consentRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Add to pipeline: assign owner (modal) ============ -->
+<div class="modal fade" id="ownerModal" tabindex="-1" aria-labelledby="ownerTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h2 class="modal-title fs-5 fw-bold" id="ownerTitle">Add to pipeline</h2><div class="fs-7 text-muted-2" id="ownerFor"></div></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="ownerPick" class="form-label fw-semibold">Assign owner</label>
+        <select id="ownerPick" class="form-select"></select>
+        <div class="fs-8 text-muted-2 mt-2">Active Fintech users from MyClassBoard.</div>
+        <div class="fs-7 text-orange mt-2" id="ownerNone" hidden>No active Fintech users found.</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="ownerGo" data-bs-dismiss="modal" disabled>Add to pipeline</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Campaigns: students with fees due (modal) ============ -->
+<div class="modal fade" id="testModal" tabindex="-1" aria-labelledby="testTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h2 class="modal-title fs-5 fw-bold" id="testTitle">Send a test WhatsApp message</h2><div class="fs-7 text-muted-2" id="testSampleNote">Test values: ₹4,400 for Kavali Vidharth Sai E (26ARN0002), due in 7 days</div></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column gap-3">
+        <label class="d-flex flex-column gap-1 fs-7 fw-semibold">Template
+          <select class="form-select form-select-sm" id="testTpl"></select></label>
+        <div class="phone" id="testPreview" style="min-height:0" aria-live="polite"></div>
+        <div>
+          <label class="form-label fs-7 fw-semibold mb-1" for="testTo">Mobile number</label>
+          <div class="d-flex align-items-stretch w-100" style="max-width:22rem">
+            <span class="d-flex align-items-center px-3 fw-semibold border rounded-start" style="background:var(--mcb-surface-2);border-right:0!important">+91</span>
+            <input type="tel" class="form-control rounded-0 rounded-end flex-grow-1 tnum" id="testTo" inputmode="numeric" maxlength="10"
+              placeholder="98765 43210" autocomplete="tel-national" style="min-width:0;font-size:1rem;letter-spacing:.06em" aria-describedby="testToHelp">
+          </div>
+          <div class="fs-8 text-muted-2 mt-1" id="testToHelp">Enter the 10-digit mobile number. Only this number gets the message; Pay Now opens https://fee.s.gy/6ilSntvGd.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="testGo" disabled>Send test</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="dueModal" tabindex="-1" aria-labelledby="dueTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h2 class="modal-title fs-5 fw-bold" id="dueTitle">Students with fees due</h2><div class="fs-7 text-muted-2" id="dueSub"></div></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-wrap gap-2 mb-3" id="dueFilters" hidden>
+          <label class="d-flex align-items-center gap-2 fs-7 fw-semibold">Branch
+            <select class="form-select form-select-sm" id="dueBranch" style="min-width:12rem"></select></label>
+          <label class="d-flex align-items-center gap-2 fs-7 fw-semibold">Due month
+            <select class="form-select form-select-sm" id="dueMonth" style="min-width:10rem"></select></label>
+        </div>
+        <div class="table-responsive" id="dueList"><table class="table table-sm align-middle mb-0 fs-7" id="dueTable"></table></div>
+        <div id="dueSend" hidden></div>
+      </div>
+      <div class="modal-footer">
+        <span class="me-auto fs-7 text-muted-2" id="dueSel" aria-live="polite"></span>
+        <button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-quiet" id="dueBack" hidden>Back to students</button>
+        <button type="button" class="btn btn-primary" id="dueWa" disabled>Send message</button>
+        <button type="button" class="btn btn-primary" id="dueGo" hidden>Send now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Export preview (modal) ============ -->
+<div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h2 class="modal-title fs-5 fw-bold" id="exportTitle">Export preview</h2><div class="fs-7 text-muted-2" id="exportSub"></div></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive"><table class="table table-sm align-middle mb-0 fs-7 text-nowrap" id="exportTable"></table></div>
+      </div>
+      <div class="modal-footer">
+        <span class="fs-8 text-muted-2 me-auto">Check the data, then download. Nothing is saved until you click Download CSV.</span>
+        <button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="exportGo" data-bs-dismiss="modal"><svg class="bi" aria-hidden="true" focusable="false"><use href="#bi-download"></use></svg>Download CSV</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Institute pop-up (modal) ============ -->
+<div class="modal fade" id="instModal" tabindex="-1" aria-labelledby="instPopTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><h2 class="modal-title fs-5 fw-bold" id="instPopTitle">Institute</h2><div class="fs-7 text-muted-2" id="instPopSub"></div></div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="instPopBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-quiet me-auto" id="instPopBack" data-list-back hidden>← Back to list</button>
+        <a class="btn btn-primary" id="instPopOpen" href="#institutes" data-bs-dismiss="modal">Open full page</a>
+        <button type="button" class="btn btn-quiet" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Toast ============ -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast align-items-center" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex"><div class="toast-body" id="toastBody"></div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>
+  </div>
+</div>
+
+<script src="vendor/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

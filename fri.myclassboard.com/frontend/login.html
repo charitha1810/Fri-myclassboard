@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sign in · MCB Revenue Intelligence</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='9' fill='%232C2350'/%3E%3Ccircle cx='8' cy='17' r='3' fill='%23F0544F'/%3E%3Ccircle cx='17' cy='17' r='3' fill='%23F5B400'/%3E%3Ccircle cx='26' cy='17' r='3' fill='%235B8DEF'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/bootstrap.min.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/login.css">
+<script src="js/theme-init.js"></script>
+</head>
+<body>
+<div class="login">
+
+  <aside class="login-brand">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-dots" aria-hidden="true"><span style="background:#F0544F"></span><span style="background:#F5B400"></span><span style="background:#5B8DEF"></span></div>
+      <div class="d-flex flex-column">
+        <span class="brand-org">MyClassBoard</span>
+        <span class="brand-name">Revenue Intelligence</span>
+      </div>
+    </div>
+    <div class="login-pitch">
+      <h2>Fee collections, across every institute.</h2>
+      <p>See how fees are paid, how much moves through MCB partner gateways, and where the next growth is.</p>
+      <ul class="login-points">
+        <li><span class="dot" style="background:#F0544F" aria-hidden="true"></span><span>Payment-mode mix and MCB gateway share, month by month</span></li>
+        <li><span class="dot" style="background:#F5B400" aria-hidden="true"></span><span>Institute scoring and gateway coverage by branch</span></li>
+        <li><span class="dot" style="background:#5B8DEF" aria-hidden="true"></span><span>Commission earned today and the levers to grow it</span></li>
+      </ul>
+    </div>
+    <div class="login-brand-foot">Figures come live from the MCB database.</div>
+  </aside>
+
+  <main class="login-main">
+    <div class="login-card">
+      <h1>Sign in</h1>
+      <p class="lead-text">Use your MyClassBoard Google account.</p>
+
+      <div class="login-action" id="googleBtn"></div>
+      <div class="login-busy" id="loginBusy" role="status" hidden>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span>Signing you in…</span>
+      </div>
+      <div class="login-alert" id="loginError" role="alert" hidden></div>
+      <noscript><div class="login-alert">JavaScript is required to sign in. Please enable it and reload this page.</div></noscript>
+
+      <p class="login-note">Access is limited to authorised MyClassBoard staff accounts. If your email is not authorised, contact your administrator.</p>
+    </div>
+    <div class="login-foot">© <span id="year"></span> MyClassBoard · Internal use only</div>
+  </main>
+
+</div>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="js/login.js"></script>
+</body>
+</html>

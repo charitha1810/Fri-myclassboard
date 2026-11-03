@@ -1,0 +1,124 @@
+/* Additions to the design system for the live, API-backed build. */
+/* Live database badge */
+.live-badge { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--mcb-border); background: var(--mcb-surface); color: var(--mcb-ink);
+  border-radius: 999px; padding: 4px 10px; font-size: .75rem; font-weight: 600; min-height: 32px; cursor: pointer; white-space: nowrap; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mcb-faint); flex: none; }
+.live-badge.ok .live-dot { background: #22A55B; box-shadow: 0 0 0 3px rgba(34,165,91,.18); }
+.live-badge.warn .live-dot { background: #D99A1E; }
+.live-badge.down { border-color: var(--mcb-red-ink); color: var(--mcb-red-ink); }
+.live-badge.down .live-dot { background: var(--mcb-red-ink); }
+@media (max-width: 767.98px) { .live-badge #liveText { display: none; } }
+
+/* Thin progress bar while figures reload */
+body.refreshing::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 2000;
+  background: linear-gradient(90deg, transparent, var(--mcb-violet), transparent); background-size: 50% 100%; animation: mcb-load 1s linear infinite; }
+@keyframes mcb-load { from { background-position: -50% 0; } to { background-position: 150% 0; } }
+body.refreshing main { opacity: .7; transition: opacity .15s; }
+
+/* Commission & AI cards */
+.comm-card { border-color: var(--mcb-violet); box-shadow: 0 0 0 1px var(--mcb-violet-soft) inset; }
+.lever { display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 10px; background: var(--mcb-surface-2); border: 1px solid var(--mcb-border-2); height: 100%; }
+.lever .v { font-size: 1.3rem; font-weight: 800; color: var(--mcb-violet-ink); }
+.lever .btn { align-self: flex-start; }
+.ai-dot { width: 10px; height: 10px; border-radius: 3px; background: linear-gradient(135deg, #5B36E0, #E0560B); display: inline-block; }
+.ai-sugg { border: 1px solid var(--mcb-border); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; }
+.ai-sugg .imp { text-align: right; white-space: nowrap; }
+.ai-head { background: var(--mcb-violet-soft); color: var(--mcb-violet-ink); border-radius: 10px; padding: 10px 14px; font-weight: 600; }
+.ai-loading { display: flex; align-items: center; gap: 10px; color: var(--mcb-muted); padding: 8px 0; }
+@media (max-width: 575.98px) { .ai-sugg { grid-template-columns: 1fr; } .ai-sugg .imp { text-align: left; } }
+
+/* Gateway usage under an institute name */
+.gw-branches { margin-top: 4px; font-size: .75rem; }
+.gw-branches > summary { cursor: pointer; color: var(--bs-link-color); font-weight: 600; list-style: none; display: inline-flex; align-items: center; gap: 4px; }
+.gw-branches > summary::-webkit-details-marker { display: none; }
+.gw-branches > summary::before { content: "▸"; transition: transform .12s; }
+.gw-branches[open] > summary::before { transform: rotate(90deg); }
+.gw-line { margin-top: 4px; font-size: .75rem; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; }
+.gw-item { display: inline-flex; align-items: center; gap: 5px; }
+.gw-item .sw { width: 8px; height: 8px; border-radius: 50%; }
+.gw-sep { color: var(--mcb-faint); }
+.gwb-table { margin-top: 6px; width: 100%; max-width: 560px; font-size: .75rem; border-collapse: collapse; background: var(--mcb-surface-2); border-radius: 8px; overflow: hidden; }
+.gwb-table th { font-weight: 600; color: var(--mcb-muted); text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--mcb-border); }
+.gwb-table td { padding: 4px 10px; border-top: 1px solid var(--mcb-border-2); vertical-align: top; }
+
+/* "How to read this" explainer inside a card */
+.howto { background: var(--mcb-surface-2); border: 1px solid var(--mcb-border-2); border-radius: 10px; padding: 8px 12px; font-size: .8125rem; }
+.howto > summary { cursor: pointer; font-weight: 600; color: var(--bs-link-color); list-style: none; display: inline-flex; align-items: center; gap: 6px; }
+.howto > summary::-webkit-details-marker { display: none; }
+.howto > summary::before { content: "?"; display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--mcb-violet-soft); color: var(--mcb-violet-ink); font-size: .7rem; font-weight: 800; }
+.howto[open] > summary { margin-bottom: 6px; }
+.howto ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
+.howto b { color: var(--mcb-ink); }
+.sim-dark .howto { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); color: #DCD8EC; }
+.sim-dark .howto b { color: #fff; }
+.sim-dark .howto > summary { color: #CFC4FF; }
+th[title], td[title], .kpi-label[title] { cursor: help; }
+
+/* Simple / Advanced wording */
+:root[data-lang="adv"] .t-s, :root:not([data-lang="adv"]) .t-a,
+:root[data-lang="adv"] .simple-only, :root:not([data-lang="adv"]) .adv-only { display: none !important; }
+.lang-switch { display: inline-flex; border: 1px solid var(--mcb-border); border-radius: 999px; padding: 2px; background: var(--mcb-surface); }
+.lang-switch button { border: 0; background: none; border-radius: 999px; padding: 4px 12px; font-size: .75rem; font-weight: 600; color: var(--mcb-muted); min-height: 30px; }
+.lang-switch button[aria-pressed="true"] { background: var(--mcb-violet); color: #fff; }
+.adv-note { font-size: .75rem; color: var(--mcb-muted); background: var(--mcb-surface-2); border-radius: 8px; padding: 6px 10px; font-family: var(--bs-font-monospace); }
+
+/* School page: payment-type grids */
+.hbar-row { display: grid; grid-template-columns: minmax(120px, 190px) minmax(0, 1fr) 96px 56px; gap: 10px; align-items: center; font-size: .8125rem; padding: 3px 0; }
+.hbar-track { height: 22px; background: var(--mcb-border-2); border-radius: 6px; overflow: hidden; }
+.hbar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; font-size: .72rem; font-weight: 700; white-space: nowrap; min-width: 3px; }
+.pm-card { border: 1px solid var(--mcb-border-2); border-radius: 12px; padding: 12px 14px; height: 100%; display: flex; flex-direction: column; gap: 8px; background: var(--mcb-surface); }
+.pm-cols { display: flex; align-items: flex-end; gap: 6px; height: 120px; padding-top: 16px; border-bottom: 1px solid var(--mcb-border); }
+.pm-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+.pm-col .v { font-size: .66rem; font-weight: 700; color: var(--mcb-ink); white-space: nowrap; margin-bottom: 2px; }
+.pm-col .b { width: 100%; max-width: 34px; border-radius: 4px 4px 0 0; min-height: 2px; }
+.pm-col.peak .v { color: var(--mcb-violet-ink); }
+.pm-months { display: flex; gap: 6px; }
+.pm-months span { flex: 1; text-align: center; font-size: .68rem; color: var(--mcb-muted); }
+@media (max-width: 575.98px) { .hbar-row { grid-template-columns: 110px minmax(0, 1fr) 80px; } .hbar-row > :last-child { display: none; } }
+
+/* Bars with their numbers printed on them */
+.lbar { display: flex; gap: 2px; border-radius: 8px; overflow: hidden; background: var(--mcb-border-2); }
+.lbar > div { display: flex; align-items: center; justify-content: center; min-width: 3px; padding: 0 6px;
+  font-size: .72rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lbar-key { margin-top: 6px; font-size: .75rem; }
+.mix-words { line-height: 1.35; }
+/* Chart value labels */
+.chart text.seglbl { font-size: 10.5px; font-weight: 700; pointer-events: none; }
+
+/* Section filter bars */
+.vfbar { background: var(--mcb-surface); border: 1px solid var(--mcb-border); border-radius: 12px; padding: 10px 12px; }
+.vfbar:empty { display: none; }
+.vfbar .form-label { margin-bottom: 2px; font-size: .6875rem; }
+.vfbar .form-select-sm, .vfbar .form-control-sm { min-height: 34px; border-radius: 8px; }
+.vfbar .gf-on { border-color: var(--mcb-violet); background-color: var(--mcb-violet-soft); font-weight: 600; }
+/* A section whose filters leave no data: keep its header and filter bar, show the message. */
+.is-empty > :not(:first-child):not(.vfbar):not(.vf-empty) { display: none !important; }
+section:not(.is-empty) > .vf-empty { display: none; }
+.gf-item { min-width: 120px; flex: 0 1 160px; }
+.gf-item.gf-school { flex: 1 1 240px; max-width: 360px; }
+@media (max-width: 575.98px) { .gf-item { flex: 1 1 45%; } .gf-item.gf-school { flex-basis: 100%; max-width: none; } }
+.load-state { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 50vh; color: var(--mcb-muted); }
+.load-state.error { flex-direction: column; text-align: center; }
+.th-sort { min-height: 0 !important; font-size: inherit !important; text-transform: inherit; letter-spacing: inherit; }
+.th-sort[aria-sort] { color: var(--mcb-ink) !important; }
+.th-sort .bi { margin-left: 2px; }
+.alert-item a { color: inherit; }
+button.consent-tile { background: var(--mcb-surface); color: inherit; font: inherit; cursor: pointer; }
+.consent-btn { border: 0; background: none; padding: 0; cursor: pointer; }
+.kcard.busy { opacity: .55; pointer-events: none; }
+.legend-btn { border: 0; background: none; padding: 0; font: inherit; color: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+.legend-btn:hover, .legend-btn:focus-visible { text-decoration: underline; }
+.sw-btn { border: 0; background: none; padding: 2px; cursor: pointer; line-height: 1; border-radius: 4px; }
+.sw-btn:hover, .sw-btn:focus-visible { outline: 2px solid var(--mcb-violet); }
+/* A table that scrolls inside its card: header and total row stay in view. With .fit-height on the card body
+   (side-by-side layout, xl and up) the card is exactly as tall as the card beside it. */
+.scroll-table { overflow: auto; max-height: 360px; }
+.scroll-table thead th { position: sticky; top: 0; z-index: 1; background: var(--mcb-surface); box-shadow: 0 1px 0 var(--mcb-border); }
+.scroll-table tr.sticky-total td { position: sticky; bottom: -1px; z-index: 1; background: var(--mcb-surface); box-shadow: 0 -1px 0 var(--mcb-border); }
+@media (min-width: 1200px) {
+  .fit-height { display: flex; flex-direction: column; }
+  .fit-height > .scroll-table { flex: 1 1 0; min-height: 0; max-height: none; }
+}
+.gw-branches-btn { font-size: .75rem; font-weight: 600; min-height: 0; margin-top: 2px; text-decoration: none; }
+.gw-branches-btn:hover, .gw-branches-btn:focus-visible { text-decoration: underline; }

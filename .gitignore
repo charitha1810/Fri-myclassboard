@@ -1,0 +1,13 @@
+# Secrets (live and staging)
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Server logs: request details and signed-in users' emails
+logs/
+
+# Backup snapshots: full site zips and portal database dumps (the scripts beside them are kept)
+staging/backup/*/

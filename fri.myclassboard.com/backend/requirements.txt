@@ -1,0 +1,9 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+SQLAlchemy>=2.0
+pyodbc>=5.1   # needs "ODBC Driver 18 for SQL Server" installed on the host
+psycopg[binary]>=3.2   # PostgreSQL portal store
+anthropic>=1.3          # Claude API for AI suggestions
+azure-search-documents>=11.4   # Campaigns fee-due pop-up (Azure AI Search indexes)

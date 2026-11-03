@@ -1,0 +1,32 @@
+/* Sign-in page. Uses the design tokens from app.css. */
+.login { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+@media (min-width: 992px) { .login { grid-template-columns: minmax(380px, 5fr) minmax(0, 7fr); grid-template-rows: 1fr; } }
+
+/* ---------- Brand panel ---------- */
+.login-brand { background: var(--mcb-night); color: var(--mcb-night-text); padding: 20px 24px; display: flex; flex-direction: column; gap: 32px; }
+.login-brand .brand-name { color: #fff; font-weight: 700; font-size: 1rem; }
+.login-brand .brand-org { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mcb-night-muted); }
+.login-pitch, .login-brand-foot { display: none; }
+@media (min-width: 992px) {
+  .login-brand { padding: 48px 56px; justify-content: space-between; }
+  .login-pitch { display: block; }
+  .login-brand-foot { display: block; font-size: .75rem; color: var(--mcb-night-muted); }
+}
+.login-pitch h2 { color: #fff; font-size: 1.75rem; font-weight: 700; line-height: 1.25; margin: 0 0 12px; max-width: 18ch; }
+.login-pitch p { margin: 0 0 28px; max-width: 46ch; font-size: .9375rem; text-wrap: pretty; }
+.login-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.login-points li { display: flex; align-items: flex-start; gap: 12px; font-size: .875rem; }
+.login-points .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; }
+
+/* ---------- Sign-in panel ---------- */
+.login-main { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 32px 16px; }
+.login-card { width: 100%; max-width: 400px; background: var(--mcb-surface); border: 1px solid var(--mcb-border); border-radius: 16px; padding: 32px 28px; box-shadow: 0 1px 2px rgba(21, 19, 31, .04), 0 12px 32px rgba(21, 19, 31, .06); }
+@media (min-width: 576px) { .login-card { padding: 40px; } }
+.login-card h1 { font-size: 1.375rem; font-weight: 700; margin: 0 0 6px; }
+.login-card .lead-text { color: var(--mcb-muted); margin: 0 0 28px; }
+.login-action { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+.login-busy { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; color: var(--mcb-muted); font-weight: 600; }
+.login-alert { margin-top: 16px; padding: 10px 12px; border-radius: 10px; background: var(--mcb-red-soft); color: var(--mcb-red-ink); font-size: .8125rem; text-align: left; }
+.login-alert .btn { min-height: 32px; margin-top: 8px; }
+.login-note { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--mcb-border-2); color: var(--mcb-faint); font-size: .8125rem; }
+.login-foot { color: var(--mcb-faint); font-size: .75rem; text-align: center; }
